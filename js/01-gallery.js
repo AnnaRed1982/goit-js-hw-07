@@ -31,11 +31,7 @@ function onImageClick(evt) {
   evt.preventDefault();
 
   const imgHref = evt.target.dataset.source;
-  const instance = basicLightbox.create(
-    `
-    <img src="${imgHref}" width="800" height="600">
-    `
-  );
+  const instance = basicLightbox.create(`<img src="${imgHref}" width="800" height="600">`);
   instance.show();
 
   galleryREF.addEventListener('keydown', onCloseModalWindow);
@@ -43,7 +39,13 @@ function onImageClick(evt) {
   function onCloseModalWindow(evt) {
     if (evt.code === 'Escape') {
       instance.close();
+      galleryREF.removeEventListener('keydown', onCloseModalWindow);
     }
     console.log(evt.code);
   }
 }
+
+// if (evt.target.nodeName !== 'IMG') {
+//   return;
+// }
+// console.log(evt.target.nodeName);
