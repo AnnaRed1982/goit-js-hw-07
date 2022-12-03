@@ -30,6 +30,10 @@ function addCard(gallery) {
 function onImageClick(evt) {
   evt.preventDefault();
 
+  if (evt.target.nodeName !== 'IMG') {
+    return;
+  }
+
   const imgHref = evt.target.dataset.source;
   const instance = basicLightbox.create(`<img src="${imgHref}" width="800" height="600">`);
   instance.show();
@@ -44,8 +48,3 @@ function onImageClick(evt) {
     console.log(evt.code);
   }
 }
-
-// if (evt.target.nodeName !== 'IMG') {
-//   return;
-// }
-// console.log(evt.target.nodeName);
