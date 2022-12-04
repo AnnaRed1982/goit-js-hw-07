@@ -28,22 +28,18 @@ function addCard(gallery) {
 }
 
 function onImageClick(evt) {
-  evt.preventDefault();
-
-  if (evt.target.nodeName !== 'IMG') {
-    return;
-  }
+  // evt.preventDefault();
 
   const imgHref = evt.target.dataset.source;
-  const instance = basicLightbox.create(`<img src="${imgHref}" width="800" height="600">`);
+  const instance = basicLightbox.create(
+    `<img src="${imgHref}" width="800" height="600">`,
+    galleryREF.addEventListener('keydown', onCloseModalWindow)
+  );
   instance.show();
-
-  galleryREF.addEventListener('keydown', onCloseModalWindow);
 
   function onCloseModalWindow(evt) {
     if (evt.code === 'Escape') {
-      instance.close();
-      galleryREF.removeEventListener('keydown', onCloseModalWindow);
+      instance.close(), galleryREF.removeEventListener('keydown', onCloseModalWindow);
     }
     console.log(evt.code);
   }
