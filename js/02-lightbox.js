@@ -27,7 +27,7 @@ function addCard(gallery) {
 }
 
 function onImageClick(evt) {
-  //   evt.preventDefault();
+    evt.preventDefault();
 
   var lightbox = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',

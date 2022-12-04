@@ -28,7 +28,7 @@ function addCard(gallery) {
 }
 
 function onImageClick(evt) {
-  // evt.preventDefault();
+  evt.preventDefault();
 
   const imgHref = evt.target.dataset.source;
   const instance = basicLightbox.create(
