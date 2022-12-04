@@ -31,15 +31,19 @@ function onImageClick(evt) {
   evt.preventDefault();
 
   const imgHref = evt.target.dataset.source;
-  const instance = basicLightbox.create(
-    `<img src="${imgHref}" width="800" height="600">`,
-    galleryREF.addEventListener('keydown', onCloseModalWindow)
-  );
+  const instance = basicLightbox.create(`<img src="${imgHref}" width="800" height="600">`, {
+    onShow: () => {
+      document.addEventListener('keydown', onCloseModalWindow);
+    },
+    onClose: () => {
+      document.removeEventListener('keydown', onCloseModalWindow);
+    },
+  });
   instance.show();
 
   function onCloseModalWindow(evt) {
     if (evt.code === 'Escape') {
-      instance.close(), galleryREF.removeEventListener('keydown', onCloseModalWindow);
+      instance.close();
     }
     console.log(evt.code);
   }

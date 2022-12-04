@@ -6,9 +6,6 @@ console.log(galleryItems);
 const galleryREF = document.querySelector('.gallery');
 const gallery = addCard(galleryItems);
 galleryREF.innerHTML = gallery;
-console.log(galleryREF);
-
-galleryREF.addEventListener('click', onImageClick);
 
 function addCard(gallery) {
   return gallery
@@ -26,12 +23,8 @@ function addCard(gallery) {
     .join('');
 }
 
-function onImageClick(evt) {
-    evt.preventDefault();
-
-  var lightbox = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionPosition: 'bottom',
-    captionDelay: 250,
-  });
-}
+var lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+});
